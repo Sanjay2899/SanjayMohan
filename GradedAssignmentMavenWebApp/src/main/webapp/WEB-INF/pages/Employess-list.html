@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Employee-List</title>
+<style>
+
+
+
+/* Apply consistent design */
+
+table {
+
+  font-family: Arial, sans-serif;
+
+  border-collapse: collapse;
+
+  width : 100%;
+
+}
+
+
+
+/* Clear Header Row */
+
+table th {
+
+  background-color: #eb73ab;
+
+  font-weight: bold;
+
+}
+
+
+
+/* Alternating Row Colors */
+
+table tr:nth-child(even) {
+
+  background-color: #9df2eb;
+
+}
+
+table tr:nth-child(odd) {
+
+  background-color: #fafa82;
+
+}
+
+
+
+/* Appropriate Alignment */
+
+table td {
+
+  text-align: center; /* or left/right depending on the content */
+
+}
+
+
+
+/* Whitespace */
+
+table td, table th {
+
+  padding: 15px; /* adjust as needed */
+
+}
+
+
+
+/* Consistent Borders */
+
+table td, table th {
+
+  border: 1px solid rgb(255, 255, 128);
+
+}
+
+
+
+
+
+a:link {
+
+  color: green;
+
+}
+
+
+
+/* visited link */
+
+a:visited {
+
+  color: green;
+
+}
+
+
+
+/* mouse over link */
+
+a:hover {
+
+  color: red;
+
+}
+
+
+
+/* selected link */
+
+a:active {
+
+  color: yellow;
+
+} 
+
+</style>
+</head>
+<body style="color:black">
+	<div align="center">
+	<a href="AddEmployee"><h3>AddRecords</h3></a>
+	<br><br>
+	</div>
+	<table border="2">
+		<tr>
+			<th>Employee Name</th>
+			<th>Employee Address</th>
+			<th>Employee Phone</th>
+			<th>Employee Salary</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		<tr th:each="temp : ${employees}">
+			<td th:text="${temp.employeeName}"></td>
+			<td th:text="${temp.employeeAddress}"></td>
+			<td th:text="${temp.employeePhone}"></td>
+			<td th:text="${temp.employeeSalary}"></td>
+			<td><a th:href="@{update-employee-form(empid=${temp.empId})}">Update</a></td>
+			<td><a th:href="@{delete-employee(empid=${temp.empId})}">Delete</a></td>
+		</tr>
+	</table>
+	
+	
+
+</body>
+</html>
